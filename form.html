@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="form.js"></script>
+</head>
+<body>
+    
+
+  <div class="container" id="container">
+    
+  <form class="needs-validation" novalidate>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom01">First name</label>
+        <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please enter vaild name
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom02">Last name</label>
+        <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please enter vaild name
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom01">Numbers 10digit only</label>
+        <input type="number" class="form-control" id="validationCustom01" placeholder="9842360534" value=""  min="1000000000" max="9999999999" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please enter 1-5 only
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom02">Age</label>
+        <input type="number" class="form-control" id="validationCustom02" min="18" max="35"  placeholder="above 18" value="" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please enter vaild age
+        </div>
+      </div>
+
+    </div>
+
+    
+
+    <button class="btn btn-primary" type="submit" onclick="final()" id="button">Submit form</button>
+  </form>
+    </div>
+
+    <div class="popup">
+      <div class="popup-content">
+          <p class="close">close</p>
+          <h2>Test Cases Results</h2>
+          <div class="" id="pop" style="color: green;">
+
+          </div>
+
+      </div>
+      
+  </div>
+  
+  
+
+
+
+
+
+<script>
+ // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+
+
+
+function test1(success,fail){
+
+setTimeout(function(){
+      count1=false;
+      Sucesscolor = "rgb(220, 53, 69)"
+      Failurecolor ="rgb(25, 135, 84)"
+      document.getElementsByTagName('input')[0].value = success;
+      var input1 = document.getElementsByTagName('input')[0];
+      var inputstyle =getComputedStyle(input1);
+      var inputcolor = inputstyle.borderBlockColor;
+      console.log(inputcolor);
+      if(inputcolor===Sucesscolor){
+        setTimeout(function(){
+        document.getElementsByTagName('input')[0].value = fail;
+        var input2 = document.getElementsByTagName('input')[0];
+        var inputstyle2 =getComputedStyle(input2);
+        var inputcolor2 = inputstyle2.borderBlockColor;
+        console.log(inputcolor2);
+        if(inputcolor2===Failurecolor){
+        count1=true;
+      }
+      if(count1===true){
+        document.getElementById("pop").innerHTML +="<p style=\"color:green\">test case 1 passed</p>";
+      }
+      else{
+        document.getElementById("pop").innerHTML +="<p style=\"color:red\">test case 1 failed</p>";
+      }
+      
+      },200)
+      }
+      else{
+        document.getElementById("pop").innerHTML +="<p style=\"color:red\">test case 1 failed</p>";
+      }
+
+},500)
+}
+
+
+
+
+
+
+function test2(success,fail){
+
+  setTimeout(function(){
+      var count2=false;
+      Sucesscolor = "rgb(220, 53, 69)"
+      Failurecolor ="rgb(25, 135, 84)"
+      document.getElementsByTagName('input')[1].value = success;
+      var input1 = document.getElementsByTagName('input')[1];
+      var inputstyle =getComputedStyle(input1);
+      var inputcolor = inputstyle.borderBlockColor;
+      console.log(inputcolor);
+      if(inputcolor===Sucesscolor){
+        setTimeout(function(){
+        document.getElementsByTagName('input')[1].value = fail;
+        var input2 = document.getElementsByTagName('input')[1];
+        var inputstyle2 =getComputedStyle(input2);
+        var inputcolor2 = inputstyle2.borderBlockColor;
+        console.log(inputcolor2);
+        if(inputcolor2===Failurecolor){
+        count2=true;
+
+      }
+      if(count2===true){
+        document.getElementById("pop").innerHTML +="<p style=\"color:green\">test case 2 passed</p>";
+      }
+      else{
+        document.getElementById("pop").innerHTML +="<p style=\"color:red\">test case 2 failed</p>";
+      }
+      
+      },200)
+      }
+      else{
+        document.getElementById("pop").innerHTML +="<p style=\"color:red\">test case 2 failed</p>";
+      }
+
+},500)
+}
+
+
+
+function test3(success,fail){
+
+setTimeout(function(){
+    var count3=false;
+    Sucesscolor = "rgb(220, 53, 69)"
+    Failurecolor ="rgb(25, 135, 84)"
+    document.getElementsByTagName('input')[2].value = success;
+    var input1 = document.getElementsByTagName('input')[2];
+    var inputstyle =getComputedStyle(input1);
+    var inputcolor = inputstyle.borderBlockColor;
+    console.log(inputcolor);
+    if(inputcolor===Sucesscolor){
+      setTimeout(function(){
+      document.getElementsByTagName('input')[2].value = fail;
+      var input2 = document.getElementsByTagName('input')[2];
+      var inputstyle2 =getComputedStyle(input2);
+      var inputcolor2 = inputstyle2.borderBlockColor;
+      console.log(inputcolor2);
+      if(inputcolor2===Failurecolor){
+      count3=true;
+    }
+    if(count3===true){
+        document.getElementById("pop").innerHTML +="<p style=\"color:green\">test case 3 passed</p>";
+      }
+      else{
+        document.getElementById("pop").innerHTML +="<p style=\"color:red\">test case 3 failed</p>";
+      }
+    
+    },200)
+    }
+    else{
+      document.getElementById("pop").innerHTML +="<p style=\"color:red\">test case 3 failed</p>";
+    }
+
+},500)
+}
+
+
+function test4(success,fail){
+  setTimeout(function(){
+    var count4=false;
+    Sucesscolor = "rgb(220, 53, 69)"
+    Failurecolor ="rgb(25, 135, 84)"
+    document.getElementsByTagName('input')[3].value = success;
+    var input1 = document.getElementsByTagName('input')[3];
+    var inputstyle =getComputedStyle(input1);
+    var inputcolor = inputstyle.borderBlockColor;
+    console.log(inputcolor);
+    if(inputcolor===Sucesscolor){
+      setTimeout(function(){
+      document.getElementsByTagName('input')[3].value = fail;
+      var input2 = document.getElementsByTagName('input')[3];
+      var inputstyle2 =getComputedStyle(input2);
+      var inputcolor2 = inputstyle2.borderBlockColor;
+      console.log(inputcolor2);
+      if(inputcolor2===Failurecolor){
+      count4=true;
+    }
+    if(count4===true){
+        document.getElementById("pop").innerHTML +="<p style=\"color:green\">test case 4 passed</p>";
+      }
+      else{
+        document.getElementById("pop").innerHTML +="<p style=\"color:red\">test case 4 failed</p>";
+      }
+    
+    },200)
+    }
+    else{
+      document.getElementById("pop").innerHTML +="<p style=\"color:red\">test case 4 failed</p>";
+    }
+
+},500)
+
+}
+
+var arg1="surya";
+var arg11="";
+
+var arg2="kumar";
+var arg22="";
+
+
+
+var arg3=9842360534;
+var arg33=123;
+
+
+
+var arg4 = 19;
+var arg44=50;
+
+
+
+
+function final(){
+  test1(arg1,arg11);
+  test2(arg2,arg22);
+  test3(arg3,arg33);
+  test4(arg4,arg44);
+}
+
+
+
+setTimeout(function(){
+  document.getElementById("button").addEventListener("click",function(){
+        document.querySelector(".popup").style.display="flex";
+    })
+},1000)
+
+
+
+    document.querySelector(".close").addEventListener("click",function(){
+        document.querySelector(".popup").style.display="none";
+    })
+
+</script>
+
+
+<style>
+  body [type=button]{
+        background-color: rgb(65, 126, 65);
+        border-radius: 10px;
+        padding: 5px;
+        color: white;
+    }
+    .popup{
+        background: rgba(0,0,0,0.6);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    .popup-content{
+        height: 380px;
+        width: 500px;
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        position: relative;
+    }
+    .close{
+        position: absolute;
+        top: -4px;
+        right: -5px;
+        cursor: pointer;
+        background: red;
+        color: white;
+        border-radius: 20%;
+    }
+</style>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+</body>
+</html>
