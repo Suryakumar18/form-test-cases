@@ -15,7 +15,7 @@
     
   <form class="needs-validation" novalidate>
     <div class="form-row">
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4 mb-3 checking1">
         <label for="validationCustom01">First name</label>
         <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="" required>
         <div class="valid-feedback">
@@ -60,7 +60,17 @@
       </div>
 
     </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom044">Message</label> <br>
+        <textarea name="" id="validationCustom044" cols="68" rows="2"></textarea>
+        <div id="errorMessage"></div>
 
+      </div>
+
+
+
+    </div>
     
 
     <button class="btn btn-primary" type="submit" onclick="final()" id="button">Submit form</button>
@@ -86,6 +96,27 @@
 
 
 <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
   'use strict';
@@ -265,19 +296,89 @@ function test4(success,fail){
 
 }
 
+function textCaseValidation(){
+  setTimeout(function(){
+    var checking=0;
+    document.getElementsByTagName('textarea')[0].value = 'hi this is surya';
+    textareaValidation();
+    var MessageIndication = document.getElementById('errorMessage').innerText;
+      console.log(document.getElementById('errorMessage').innerText);
+      if(MessageIndication==='sucess'){
+          checking++;
+          setTimeout(function(){
+            document.getElementById("pop").innerHTML +="<p style=\"color:green\">test case 5 passed</p>";
+
+          },200)
+      }
+      else{
+        document.getElementById("pop").innerHTML +="<p style=\"color:red\">test case 5 failed</p>";
+      }
+
+  
+
+  },600)
+}
+
+function textareaValidation(){
+  const maxLength = 20;
+  const badWords1 = "fuck";
+  const badWords2 = "bitch";
+
+
+  var textareaobj = document.getElementsByTagName('textarea')[0];
+  var textareaValue = textareaobj.value;
+  var textarealength = textareaValue.length
+  var textSplit = textareaValue.split(' ');
+  var badWordIndication=0;
+
+
+  console.log(textareaValue);
+  console.log(textarealength);
+  console.log(textSplit);
+
+  for(var i =0;i<textSplit.length;i++){
+    if(textSplit[i]===badWords1||textSplit[i]===badWords2){
+      badWordIndication++;
+    }
+  }
+
+  if(textareaValue===""){
+    document.getElementById("errorMessage").innerHTML+="<p style=\"color:red\">enter some messages</p>"
+  }
+  else if(maxLength<=textarealength){
+    document.getElementById("errorMessage").innerHTML+="<p style=\"color:red\">20 words only allowed</p>"
+  }
+  else if(badWordIndication===1){
+    document.getElementById("errorMessage").innerHTML+="<p style=\"color:red\">bad words not allowed</p>"
+  }
+  else{
+    document.getElementById("errorMessage").innerHTML+="<p style=\"color:green\">sucess</p>"
+  }
+ 
+
+}
+
+
+
+
+
+setTimeout(function(){
+  document.getElementById("button").addEventListener("click",function(){
+        document.querySelector(".popup").style.display="flex";
+    })
+},1000)
+
+
+
+
+
+
 var arg1="surya";
 var arg11="";
-
 var arg2="kumar";
 var arg22="";
-
-
-
 var arg3=9842360534;
 var arg33=123;
-
-
-
 var arg4 = 19;
 var arg44=50;
 
@@ -289,15 +390,12 @@ function final(){
   test2(arg2,arg22);
   test3(arg3,arg33);
   test4(arg4,arg44);
+  textCaseValidation();
 }
 
 
 
-setTimeout(function(){
-  document.getElementById("button").addEventListener("click",function(){
-        document.querySelector(".popup").style.display="flex";
-    })
-},1000)
+
 
 
 
